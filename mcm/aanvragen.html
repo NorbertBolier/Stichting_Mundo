@@ -600,42 +600,46 @@
                       name="_subject"
                       value="Nieuwe aanvraag via website - MCM"
                     />
-                    <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_template" value="box" />
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="try.html" />
+                    <input
+                      type="hidden"
+                      name="_autoresponse"
+                      value="Bedankt voor uw aanvraag! U ontvangt binnenkort een bevestiging van ons team. Hieronder vindt u een kopie van uw ingediende aanvraag."
+                    />
                     <input type="text" name="_honey" style="display: none" />
 
                     <!-- Section 1: Aanvrager (Contact Person) -->
                     <div class="form-section">
                       <h3 class="section-title">Gegevens contact persoon</h3>
 
-                      <label for="aanvrager_naam" class="w-form-label required"
+                      <label
+                        for="contact_persoon_naam"
+                        class="w-form-label required"
                         >Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="aanvrager_naam"
-                        id="aanvrager_naam"
+                        name="contact_persoon_naam"
+                        id="contact_persoon_naam"
                         placeholder="Bijv. Jan Jansen"
-                        required
                       />
-                      <label for="aanvrager_email" class="w-form-label required"
+                      <label for="email" class="w-form-label required"
                         >E-mail</label
                       >
                       <input
                         type="email"
                         class="w-input"
                         maxlength="256"
-                        name="aanvrager_email"
-                        id="aanvrager_email"
+                        name="email"
+                        id="email"
                         placeholder="bijv. naam@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                        required
                       />
                       <label
-                        for="aanvrager_telnr1"
+                        for="contact_persoon_telnr1"
                         class="w-form-label required"
                         >Telefoonnummer</label
                       >
@@ -643,12 +647,11 @@
                         type="tel"
                         class="w-input"
                         maxlength="30"
-                        name="aanvrager_telnr1"
-                        id="aanvrager_telnr1"
+                        name="contact_persoon_telnr1"
+                        id="contact_persoon_telnr1"
                         placeholder="Bijv. +31 6 12345678"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
-                        required
                       />
                       <div
                         class="field-error aanvrager-telnr1-error"
@@ -662,44 +665,41 @@
                         Stichting / Organisatie gegevens
                       </h3>
 
-                      <label for="org_naam" class="w-form-label required"
+                      <label for="stichting_naam" class="w-form-label required"
                         >Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_naam"
-                        id="org_naam"
+                        name="stichting_naam"
+                        id="stichting_naam"
                         placeholder="Naam van de stichting/organisatie"
-                        required
                       />
 
-                      <label for="org_adres" class="w-form-label required"
+                      <label for="stichting_adres" class="w-form-label required"
                         >Postadres</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_adres"
-                        id="org_adres"
+                        name="stichting_adres"
+                        id="stichting_adres"
                         placeholder="Bijv. Hoofdstraat 123"
-                        required
                       />
 
-                      <label for="org_email" class="w-form-label required"
+                      <label for="stichting_email" class="w-form-label required"
                         >E-mail</label
                       >
                       <input
-                        type="email"
+                        type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_email"
-                        id="org_email"
+                        name="stichting_email"
+                        id="stichting_email"
                         placeholder="bijv. info@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                        required
                       />
 
                       <label for="org_telnr" class="w-form-label required"
@@ -709,12 +709,11 @@
                         type="tel"
                         class="w-input"
                         maxlength="30"
-                        name="org_telnr"
-                        id="org_telnr"
+                        name="stichting_telnr"
+                        id="stichting_telnr"
                         placeholder="Bijv. +31 20 1234567"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
-                        required
                       />
                       <div
                         class="field-error org-telnr-error"
@@ -723,107 +722,108 @@
                         Voer een geldig telefoonnummer in (minimaal 6 cijfers).
                       </div>
 
-                      <label for="org_website" class="w-form-label"
+                      <label for="stichting_website" class="w-form-label"
                         >Website</label
                       >
                       <input
                         type="url"
                         class="w-input"
                         maxlength="256"
-                        name="org_website"
-                        id="org_website"
+                        name="stichting_website"
+                        id="stichting_website"
                         placeholder="https://www.organisatie.nl"
                       />
 
-                      <label for="org_iban" class="w-form-label required"
+                      <label
+                        for="stichting_bankrekening"
+                        class="w-form-label required"
                         >Bankrekening nummer</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="34"
-                        name="org_iban"
-                        id="org_iban"
+                        name="stichting_bankrekening"
+                        id="stichting_bankrekening"
                         placeholder="NL91 ABNA 0417 1643 00"
-                        required
                       />
 
                       <!-- Section 3: Aanvraag -->
                       <h3 class="section-title">Aanvraag</h3>
 
-                      <label for="proj_naam" class="w-form-label required"
+                      <label for="project_naam" class="w-form-label required"
                         >Project Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_naam"
-                        id="proj_naam"
+                        name="project_naam"
+                        id="project_naam"
                         placeholder="Naam van de Project"
-                        required
                       />
 
-                      <label for="org_aanvraag" class="w-form-label required"
+                      <label
+                        for="project_omschrijving"
+                        class="w-form-label required"
                         >Project Omschrijving</label
                       >
                       <textarea
                         class="w-input"
-                        name="org_aanvraag"
-                        id="org_aanvraag"
+                        name="project_omschrijving"
+                        id="project_omschrijving"
                         placeholder="Beschrijf de doelstelling van de organisatie..."
                         rows="4"
-                        required
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
                         0 / 50 woorden
                       </div>
-                      <label for="proj_bedrag" class="w-form-label required"
+                      <label for="project_bedrag" class="w-form-label required"
                         >Gevraagd bedrag (€)</label
                       >
                       <input
                         type="number"
                         class="w-input"
-                        name="proj_bedrag"
-                        id="proj_bedrag"
+                        name="project_bedrag"
+                        id="project_bedrag"
                         placeholder="Bijv. 2500"
                         min="0"
                         step="0.01"
-                        required
                       />
 
                       <label
-                        for="proj_start_datum"
+                        for="project_start_datum"
                         class="w-form-label required"
                         >Verwachte Startdatum project</label
                       >
                       <input
                         type="date"
                         class=""
-                        name="proj_start_datum"
-                        id="proj_start_datum"
-                        required
+                        name="project_start_datum"
+                        id="project_start_datum"
                       />
 
-                      <label for="proj_eind_datum" class="w-form-label required"
+                      <label
+                        for="project_eind_datum"
+                        class="w-form-label required"
                         >Verwachte Einddatum project</label
                       >
                       <input
                         type="date"
                         class=""
-                        name="proj_eind_datum"
-                        id="proj_eind_datum"
-                        required
+                        name="project_eind_datum"
+                        id="project_eind_datum"
                       />
 
-                      <label for="proj_categorie" class="w-form-label required"
+                      <label
+                        for="project_categorie"
+                        class="w-form-label required"
                         >Project categorie</label
                       >
                       <select
                         class="w-input"
-                        name="proj_categorie"
-                        id="proj_categorie"
-                        required
+                        name="project_categorie"
+                        id="project_categorie"
                       >
                         <option value="">Selecteer een categorie</option>
                         <option value="onderwijs">Noodhulp</option>
@@ -835,30 +835,30 @@
                         <option value="vrouwen">Vrouwen & Gelijkheid</option>
                         <option value="infrastructuur">Anders</option>
                       </select>
-                      <label for="proj_categorie_anders" class="w-form-label"
+                      <label for="project_categorie_anders" class="w-form-label"
                         >Indien anders</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_categorie_anders"
-                        id="proj_categorie_anders"
+                        name="project_categorie_anders"
+                        id="project_categorie_anders"
                         placeholder="https://www.organisatie.nl"
                       />
-                      <label for="proj_land" class="w-form-label required"
+                      <label for="project_land" class="w-form-label required"
                         >Land</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_land"
-                        id="proj_land"
+                        name="project_land"
+                        id="project_land"
                         placeholder="Nederland"
                       />
                       <label
-                        for="proj_doelgroepen"
+                        for="project_doelgroepen"
                         class="w-form-label required"
                         >Doelgroepen</label
                       >
@@ -866,11 +866,11 @@
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_doelgroepen"
-                        id="proj_doelgroepen"
+                        name="project_doelgroepen"
+                        id="project_doelgroepen"
                       />
                       <label
-                        for="proj_samenwerkings"
+                        for="project_samenwerkings"
                         class="w-form-label required"
                         >Samenwerkings verband, bijv. andere stichting of
                         NGO's</label
@@ -879,8 +879,8 @@
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_samenwerkings"
-                        id="proj_samenwerkings"
+                        name="project_samenwerkings"
+                        id="project_samenwerkings"
                       />
 
                       <!-- PDF Upload Section -->
@@ -905,7 +905,7 @@
                         <label>
                           <input
                             type="radio"
-                            name="aanbiedingsbrief"
+                            name="aanbiedingsbrief_check"
                             value="ja"
                             required
                           />
@@ -914,8 +914,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="aanbiedingsbrief"
-                            value="nee"
+                            name="aanbiedingsbrief_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -926,13 +926,15 @@
                         documenten?
                       </p>
 
-                      <label class="w-form-label required">Projectplan</label>
+                      <label class="w-form-label required"
+                        >Project Aanvraag</label
+                      >
                       <div style="margin: 10px 0; display: flex; gap: 20px">
                         <label>
                           <input
                             type="radio"
-                            name="projectplan"
-                            value="ja"
+                            name="project_aanvraag_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -940,8 +942,34 @@
                         <label>
                           <input
                             type="radio"
-                            name="projectplan"
-                            value="nee"
+                            name="project_aanvraag_check"
+                            value="no"
+                            required
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een project aanvraag bijgevoegd in uw
+                        documenten?
+                      </p>
+
+                      <label class="w-form-label required">Projectplan</label>
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="projectplan_check"
+                            value="yes"
+                            required
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="projectplan_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -956,8 +984,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="begroting"
-                            value="ja"
+                            name="begroting_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -965,8 +993,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="begroting"
-                            value="nee"
+                            name="begroting_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -981,8 +1009,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="dekkingsplan"
-                            value="ja"
+                            name="dekkingsplan_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -990,8 +1018,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="dekkingsplan"
-                            value="nee"
+                            name="dekkingsplan_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -1008,8 +1036,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="uittreksel_handelsregister"
-                            value="ja"
+                            name="uittreksel_handelsregister_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -1017,8 +1045,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="uittreksel_handelsregister"
-                            value="nee"
+                            name="uittreksel_handelsregister_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -1036,8 +1064,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="ANBI_verklaring"
-                            value="ja"
+                            name="ANBI_verklaring_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -1045,8 +1073,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="ANBI_verklaring"
-                            value="nee"
+                            name="ANBI_verklaring_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -1061,8 +1089,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="statuten"
-                            value="ja"
+                            name="statuten_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -1070,8 +1098,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="statuten"
-                            value="nee"
+                            name="statuten_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -1089,8 +1117,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="financieel_jaarverslag"
-                            value="ja"
+                            name="financieel_jaarverslag_check"
+                            value="yes"
                             required
                           />
                           Ja
@@ -1098,8 +1126,8 @@
                         <label>
                           <input
                             type="radio"
-                            name="financieel_jaarverslag"
-                            value="nee"
+                            name="financieel_jaarverslag_check"
+                            value="no"
                             required
                           />
                           Nee
@@ -1130,13 +1158,12 @@
                         name="pdf"
                         id="pdf"
                         accept=".pdf"
-                        required
                       />
                       <p class="radio-help-text">
                         Upload een PDF document met aanvullende informatie over
                         uw aanvraag.
                       </p>
-                      <label for="vragen" class="w-form-label required"
+                      <label for="vragen" class="w-form-label"
                         >Vragen en/of opmerkingen</label
                       >
                       <textarea
@@ -1145,7 +1172,6 @@
                         id="vragen"
                         placeholder="Vragen over uw aanvraag..."
                         rows="4"
-                        required
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
                         0 / 50 woorden
