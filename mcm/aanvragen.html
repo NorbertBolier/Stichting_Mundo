@@ -197,303 +197,371 @@
         }
       }
 
-      /* ALTERNATIVE DESIGN - Modern Card-Based Layout */
+      /* THIRD DESIGN - Clean Minimalist with Geometric Elements */
       
       /* Main form container */
       .aanvraag-info {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 20px;
-        padding: 40px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 0;
+        padding: 0;
         margin: 30px 0;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        box-shadow: none;
         position: relative;
         overflow: hidden;
       }
 
-      .aanvraag-info::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1;
-      }
-
-      .aanvraag-info > * {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* Form sections as cards */
+      /* Form sections with geometric design */
       .form-section {
         background: #ffffff;
-        border-radius: 16px;
-        padding: 30px;
-        margin: 25px 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
+        border: none;
+        border-radius: 0;
+        padding: 40px 50px;
+        margin: 0;
+        box-shadow: none;
+        border-left: 6px solid #10b981;
         position: relative;
-        overflow: hidden;
+        transition: all 0.4s ease;
+        border-bottom: 1px solid #f3f4f6;
+      }
+
+      .form-section:nth-child(2) {
+        border-left-color: #3b82f6;
+      }
+
+      .form-section:nth-child(3) {
+        border-left-color: #8b5cf6;
+      }
+
+      .form-section:nth-child(4) {
+        border-left-color: #f59e0b;
       }
 
       .form-section::before {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
+        right: 0;
+        width: 0;
+        height: 0;
+        border-left: 30px solid transparent;
+        border-top: 30px solid #f9fafb;
+        z-index: 1;
       }
 
       .form-section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        background: #fafbfc;
+        transform: translateX(10px);
       }
 
-      /* Section titles */
+      /* Section titles with geometric accent */
       .form-section .section-title {
-        color: #2d3748;
-        font-size: 1.5em;
-        margin-bottom: 30px;
-        font-weight: 700;
+        color: #111827;
+        font-size: 1.8em;
+        margin-bottom: 35px;
+        font-weight: 300;
         position: relative;
-        padding-left: 20px;
+        padding-left: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
       }
 
-      .form-section .section-title::before {
+      .form-section .section-title::after {
         content: '';
         position: absolute;
+        bottom: -10px;
         left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 30px;
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        width: 60px;
+        height: 3px;
+        background: #10b981;
         border-radius: 2px;
       }
 
-      /* Form fields styling */
+      .form-section:nth-child(2) .section-title::after {
+        background: #3b82f6;
+      }
+
+      .form-section:nth-child(3) .section-title::after {
+        background: #8b5cf6;
+      }
+
+      .form-section:nth-child(4) .section-title::after {
+        background: #f59e0b;
+      }
+
+      /* Form fields with clean minimal styling */
       .form-section .w-form-label {
-        font-weight: 600;
-        color: #4a5568;
-        margin-bottom: 8px;
+        font-weight: 400;
+        color: #374151;
+        margin-bottom: 12px;
         display: block;
-        font-size: 0.95em;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        font-size: 1em;
+        text-transform: none;
+        letter-spacing: 0;
+        position: relative;
       }
 
       .form-section .w-input {
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 15px 20px;
+        border: none;
+        border-bottom: 2px solid #e5e7eb;
+        border-radius: 0;
+        padding: 15px 0;
         font-size: 16px;
         transition: all 0.3s ease;
-        background: #f8fafc;
+        background: transparent;
         width: 100%;
         box-sizing: border-box;
-      }
-
-      .form-section .w-input:focus {
-        border-color: #667eea;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        outline: none;
-        transform: translateY(-2px);
-      }
-
-      .form-section textarea {
-        min-height: 120px;
-        resize: vertical;
         font-family: inherit;
       }
 
-      /* Radio button styling */
+      .form-section .w-input:focus {
+        border-bottom-color: #10b981;
+        background: transparent;
+        box-shadow: none;
+        outline: none;
+        transform: none;
+      }
+
+      .form-section:nth-child(2) .w-input:focus {
+        border-bottom-color: #3b82f6;
+      }
+
+      .form-section:nth-child(3) .w-input:focus {
+        border-bottom-color: #8b5cf6;
+      }
+
+      .form-section:nth-child(4) .w-input:focus {
+        border-bottom-color: #f59e0b;
+      }
+
+      .form-section textarea {
+        min-height: 100px;
+        resize: vertical;
+        font-family: inherit;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px;
+        background: #fafbfc;
+        transition: all 0.3s ease;
+      }
+
+      .form-section textarea:focus {
+        border-color: #10b981;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      }
+
+      /* Custom radio button design */
       .form-section input[type="radio"] {
         appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #e2e8f0;
-        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #d1d5db;
+        border-radius: 3px;
         background: #ffffff;
         position: relative;
-        margin-right: 10px;
+        margin-right: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
       }
 
       .form-section input[type="radio"]:checked {
-        border-color: #667eea;
-        background: #667eea;
+        border-color: #10b981;
+        background: #10b981;
       }
 
       .form-section input[type="radio"]:checked::after {
-        content: '';
+        content: '✓';
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 8px;
-        height: 8px;
-        background: #ffffff;
-        border-radius: 50%;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: bold;
       }
 
       .form-section label {
         display: flex;
         align-items: center;
-        margin: 10px 0;
+        margin: 15px 0;
         cursor: pointer;
-        font-weight: 500;
-        color: #4a5568;
+        font-weight: 400;
+        color: #374151;
+        font-size: 1em;
       }
 
-      /* File input styling */
+      /* File input with clean design */
       .form-section input[type="file"] {
-        border: 2px dashed #cbd5e0;
-        border-radius: 12px;
-        padding: 20px;
-        background: #f7fafc;
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        padding: 30px 20px;
+        background: #fafbfc;
         width: 100%;
         cursor: pointer;
         transition: all 0.3s ease;
+        text-align: center;
+        color: #6b7280;
       }
 
       .form-section input[type="file"]:hover {
-        border-color: #667eea;
-        background: #edf2f7;
+        border-color: #10b981;
+        background: #f0fdf4;
+        color: #10b981;
       }
 
       /* Character counter */
       .char-counter {
-        font-size: 0.85em;
-        color: #718096;
+        font-size: 0.8em;
+        color: #9ca3af;
         text-align: right;
         margin-top: 8px;
-        font-weight: 500;
+        font-weight: 400;
       }
 
       /* Required field styling */
       .required::after {
         content: " *";
-        color: #e53e3e;
-        font-weight: bold;
-        font-size: 1.1em;
+        color: #ef4444;
+        font-weight: 500;
+        font-size: 1em;
       }
 
-      /* Submit button */
+      /* Submit button with geometric design */
       .w-button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #111827;
         border: none;
-        border-radius: 12px;
-        padding: 18px 40px;
-        font-size: 18px;
-        font-weight: 600;
+        border-radius: 0;
+        padding: 20px 60px;
+        font-size: 16px;
+        font-weight: 500;
         color: white;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        box-shadow: none;
         text-transform: uppercase;
         letter-spacing: 1px;
         width: 100%;
-        margin-top: 30px;
+        margin-top: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .w-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .w-button:hover::before {
+        left: 100%;
       }
 
       .w-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        background: #374151;
+        transform: none;
+        box-shadow: none;
       }
 
       /* Error messages */
       .field-error {
-        background: #fed7d7;
-        color: #c53030;
+        background: #fef2f2;
+        color: #dc2626;
         padding: 12px 16px;
-        border-radius: 8px;
+        border-radius: 6px;
         margin-top: 8px;
         font-size: 0.9em;
-        font-weight: 500;
-        border-left: 4px solid #e53e3e;
+        font-weight: 400;
+        border-left: 4px solid #ef4444;
       }
 
       /* Help text */
       .radio-help-text {
         font-size: 0.9em;
-        color: #718096;
-        margin-top: 5px;
-        font-style: italic;
+        color: #6b7280;
+        margin-top: 8px;
+        font-style: normal;
+        font-weight: 400;
       }
 
       /* Date and select inputs */
       .form-section input[type="date"],
       .form-section select {
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 15px 20px;
+        border: none;
+        border-bottom: 2px solid #e5e7eb;
+        border-radius: 0;
+        padding: 15px 0;
         font-size: 16px;
         transition: all 0.3s ease;
-        background: #f8fafc;
+        background: transparent;
         width: 100%;
         box-sizing: border-box;
         cursor: pointer;
+        font-family: inherit;
       }
 
       .form-section input[type="date"]:focus,
       .form-section select:focus {
-        border-color: #667eea;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-bottom-color: #10b981;
+        background: transparent;
+        box-shadow: none;
         outline: none;
-        transform: translateY(-2px);
+        transform: none;
       }
 
       /* Number input styling */
       .form-section input[type="number"] {
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 15px 20px;
+        border: none;
+        border-bottom: 2px solid #e5e7eb;
+        border-radius: 0;
+        padding: 15px 0;
         font-size: 16px;
         transition: all 0.3s ease;
-        background: #f8fafc;
+        background: transparent;
         width: 100%;
         box-sizing: border-box;
+        font-family: inherit;
       }
 
       .form-section input[type="number"]:focus {
-        border-color: #667eea;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-bottom-color: #10b981;
+        background: transparent;
+        box-shadow: none;
         outline: none;
-        transform: translateY(-2px);
+        transform: none;
       }
 
       /* Responsive design */
       @media (max-width: 768px) {
         .aanvraag-info {
-          padding: 20px;
+          padding: 0;
           margin: 20px 0;
         }
         
         .form-section {
-          padding: 20px;
-          margin: 20px 0;
+          padding: 30px 25px;
+          margin: 0;
         }
         
         .form-section .section-title {
-          font-size: 1.3em;
+          font-size: 1.5em;
+        }
+
+        .form-section:hover {
+          transform: translateX(5px);
         }
       }
 
-      /* Animation for form reveal */
+      /* Subtle animation for form reveal */
       .form-section {
         opacity: 0;
-        transform: translateY(30px);
-        animation: slideInUp 0.6s ease forwards;
+        transform: translateX(-30px);
+        animation: slideInLeft 0.8s ease forwards;
       }
 
       .form-section:nth-child(1) { animation-delay: 0.1s; }
@@ -501,10 +569,10 @@
       .form-section:nth-child(3) { animation-delay: 0.3s; }
       .form-section:nth-child(4) { animation-delay: 0.4s; }
 
-      @keyframes slideInUp {
+      @keyframes slideInLeft {
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateX(0);
         }
       }
     </style>
@@ -824,7 +892,7 @@
               >
 
               <div class="aanvraag-info" style="display: none">
-                <h2 class="heading-12" style="text-align: center; color: #2d3748; font-size: 2.5em; margin-bottom: 40px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Aanvraagformulier</h2>
+                <h2 class="heading-12" style="text-align: center; color: #111827; font-size: 2.2em; margin-bottom: 50px; font-weight: 200; text-transform: uppercase; letter-spacing: 4px; border-bottom: 2px solid #e5e7eb; padding-bottom: 20px;">Aanvraagformulier</h2>
                 <div class="w-form">
                   <form
                     id="aanvraag-form"
