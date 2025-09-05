@@ -197,75 +197,315 @@
         }
       }
 
-      /* Form section styling */
-      .form-section {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 25px;
+      /* ALTERNATIVE DESIGN - Modern Card-Based Layout */
+      
+      /* Main form container */
+      .aanvraag-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 40px;
         margin: 30px 0;
-        border-left: 4px solid #007bff;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
       }
 
+      .aanvraag-info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1;
+      }
+
+      .aanvraag-info > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Form sections as cards */
+      .form-section {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 30px;
+        margin: 25px 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .form-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Section titles */
       .form-section .section-title {
-        color: #007bff;
-        font-size: 1.3em;
-        margin-bottom: 25px;
-        font-weight: 600;
-        border-bottom: 2px solid #e9ecef;
-        padding-bottom: 10px;
+        color: #2d3748;
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        font-weight: 700;
+        position: relative;
+        padding-left: 20px;
       }
 
+      .form-section .section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 30px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 2px;
+      }
+
+      /* Form fields styling */
       .form-section .w-form-label {
-        font-weight: 500;
-        color: #495057;
-        margin-top: 15px;
+        font-weight: 600;
+        color: #4a5568;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 0.95em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       .form-section .w-input {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .form-section .w-input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        border-color: #667eea;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+        transform: translateY(-2px);
       }
 
       .form-section textarea {
-        min-height: 80px;
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
       }
 
-      /* Gift section specific styling */
-      .gift-section {
-        background-color: #e7f3ff;
-        border-left: 4px solid #28a745;
+      /* Radio button styling */
+      .form-section input[type="radio"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #e2e8f0;
+        border-radius: 50%;
+        background: #ffffff;
+        position: relative;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
 
-      .gift-section .section-title {
-        color: #28a745;
+      .form-section input[type="radio"]:checked {
+        border-color: #667eea;
+        background: #667eea;
+      }
+
+      .form-section input[type="radio"]:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        background: #ffffff;
+        border-radius: 50%;
+      }
+
+      .form-section label {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        cursor: pointer;
+        font-weight: 500;
+        color: #4a5568;
+      }
+
+      /* File input styling */
+      .form-section input[type="file"] {
+        border: 2px dashed #cbd5e0;
+        border-radius: 12px;
+        padding: 20px;
+        background: #f7fafc;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .form-section input[type="file"]:hover {
+        border-color: #667eea;
+        background: #edf2f7;
       }
 
       /* Character counter */
       .char-counter {
-        font-size: 0.8em;
-        color: #6c757d;
+        font-size: 0.85em;
+        color: #718096;
         text-align: right;
-        margin-top: 5px;
+        margin-top: 8px;
+        font-weight: 500;
       }
 
-      /* Optional field indicator */
-      .optional-field {
-        color: #6c757d;
+      /* Required field styling */
+      .required::after {
+        content: " *";
+        color: #e53e3e;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      /* Submit button */
+      .w-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 18px 40px;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      .w-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+      }
+
+      /* Error messages */
+      .field-error {
+        background: #fed7d7;
+        color: #c53030;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-top: 8px;
         font-size: 0.9em;
+        font-weight: 500;
+        border-left: 4px solid #e53e3e;
+      }
+
+      /* Help text */
+      .radio-help-text {
+        font-size: 0.9em;
+        color: #718096;
+        margin-top: 5px;
         font-style: italic;
       }
 
-      /* Required field asterisk styling */
-      .required::after {
-        content: " *";
-        color: #dc3545;
-        font-weight: bold;
+      /* Date and select inputs */
+      .form-section input[type="date"],
+      .form-section select {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+
+      .form-section input[type="date"]:focus,
+      .form-section select:focus {
+        border-color: #667eea;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      /* Number input styling */
+      .form-section input[type="number"] {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .form-section input[type="number"]:focus {
+        border-color: #667eea;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .aanvraag-info {
+          padding: 20px;
+          margin: 20px 0;
+        }
+        
+        .form-section {
+          padding: 20px;
+          margin: 20px 0;
+        }
+        
+        .form-section .section-title {
+          font-size: 1.3em;
+        }
+      }
+
+      /* Animation for form reveal */
+      .form-section {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideInUp 0.6s ease forwards;
+      }
+
+      .form-section:nth-child(1) { animation-delay: 0.1s; }
+      .form-section:nth-child(2) { animation-delay: 0.2s; }
+      .form-section:nth-child(3) { animation-delay: 0.3s; }
+      .form-section:nth-child(4) { animation-delay: 0.4s; }
+
+      @keyframes slideInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
     <script
@@ -584,7 +824,7 @@
               >
 
               <div class="aanvraag-info" style="display: none">
-                <h2 class="heading-12">Aanvraagformulier</h2>
+                <h2 class="heading-12" style="text-align: center; color: #2d3748; font-size: 2.5em; margin-bottom: 40px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Aanvraagformulier</h2>
                 <div class="w-form">
                   <form
                     id="aanvraag-form"
