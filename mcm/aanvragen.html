@@ -600,12 +600,13 @@
                       name="_subject"
                       value="Nieuwe aanvraag via website - MCM"
                     />
-                    <input type="hidden" name="_template" value="box" />
+                    <input type="hidden" name="_template" value="table" />
                     <input type="hidden" name="_captcha" value="false" />
+                    <!-- Autoresponse will only work when captcha is enabled but for this you must be on a live server not locally-->
                     <input
                       type="hidden"
                       name="_autoresponse"
-                      value="Bedankt voor uw aanvraag! U ontvangt binnenkort een bevestiging van ons team. Hieronder vindt u een kopie van uw ingediende aanvraag."
+                      value="Bedankt voor uw aanvraag!"
                     />
                     <input type="text" name="_honey" style="display: none" />
 
@@ -689,15 +690,17 @@
                         placeholder="Bijv. Hoofdstraat 123"
                       />
 
-                      <label for="stichting_email" class="w-form-label required"
+                      <label
+                        for="stichting_e-mail"
+                        class="w-form-label required"
                         >E-mail</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="stichting_email"
-                        id="stichting_email"
+                        name="stichting_e-mail"
+                        id="stichting_e-mail"
                         placeholder="bijv. info@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                       />
@@ -915,7 +918,7 @@
                           <input
                             type="radio"
                             name="aanbiedingsbrief_check"
-                            value="no"
+                            value="nee"
                             required
                           />
                           Nee
@@ -934,8 +937,7 @@
                           <input
                             type="radio"
                             name="project_aanvraag_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -943,8 +945,7 @@
                           <input
                             type="radio"
                             name="project_aanvraag_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -960,8 +961,7 @@
                           <input
                             type="radio"
                             name="projectplan_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -969,8 +969,7 @@
                           <input
                             type="radio"
                             name="projectplan_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -985,8 +984,7 @@
                           <input
                             type="radio"
                             name="begroting_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -994,8 +992,7 @@
                           <input
                             type="radio"
                             name="begroting_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1010,8 +1007,7 @@
                           <input
                             type="radio"
                             name="dekkingsplan_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -1019,8 +1015,7 @@
                           <input
                             type="radio"
                             name="dekkingsplan_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1037,8 +1032,7 @@
                           <input
                             type="radio"
                             name="uittreksel_handelsregister_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -1046,8 +1040,7 @@
                           <input
                             type="radio"
                             name="uittreksel_handelsregister_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1065,8 +1058,7 @@
                           <input
                             type="radio"
                             name="ANBI_verklaring_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -1074,8 +1066,7 @@
                           <input
                             type="radio"
                             name="ANBI_verklaring_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1090,8 +1081,7 @@
                           <input
                             type="radio"
                             name="statuten_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -1099,8 +1089,7 @@
                           <input
                             type="radio"
                             name="statuten_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1118,8 +1107,7 @@
                           <input
                             type="radio"
                             name="financieel_jaarverslag_check"
-                            value="yes"
-                            required
+                            value="ja"
                           />
                           Ja
                         </label>
@@ -1127,8 +1115,7 @@
                           <input
                             type="radio"
                             name="financieel_jaarverslag_check"
-                            value="no"
-                            required
+                            value="nee"
                           />
                           Nee
                         </label>
@@ -1281,7 +1268,6 @@
                 data-w-id="ed1d3dfa-64ab-f559-94df-abfc633ec478"
                 class="div-block-15"
               ></div>
-              <p class="paragraph-6">WEBSITE BY SIRIAN</p>
               <div
                 data-w-id="ed1d3dfa-64ab-f559-94df-abfc633ec47b"
                 class="div-block-16"
@@ -1340,14 +1326,7 @@
             id="w-node-_5a8284b6-5c8b-200d-2430-f6f5e007a2ef-633ec467"
             class="div-block-14 mobile"
           >
-            <a
-              data-w-id="5a8284b6-5c8b-200d-2430-f6f5e007a2f0"
-              href="https://www.sirian.co"
-              target="_blank"
-              class="div-block-13 w-inline-block"
-            >
               <div class="div-block-15"></div>
-              <p class="paragraph-6">DESIGN BY SIRIAN</p>
               <div class="div-block-16"></div>
             </a>
           </div>
