@@ -260,6 +260,13 @@
         font-size: 0.9em;
         font-style: italic;
       }
+
+      /* Required field asterisk styling */
+      .required::after {
+        content: " *";
+        color: #dc3545;
+        font-weight: bold;
+      }
     </style>
     <script
       src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
@@ -595,40 +602,45 @@
                     />
                     <input type="hidden" name="_template" value="table" />
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="try.html" />
+                    <!-- Autoresponse will only work when captcha is enabled but for this you must be on a live server not locally-->
+                    <input
+                      type="hidden"
+                      name="_autoresponse"
+                      value="Bedankt voor uw aanvraag!"
+                    />
                     <input type="text" name="_honey" style="display: none" />
 
                     <!-- Section 1: Aanvrager (Contact Person) -->
                     <div class="form-section">
                       <h3 class="section-title">Gegevens contact persoon</h3>
 
-                      <label for="aanvrager_naam" class="w-form-label required"
+                      <label
+                        for="contact_persoon_naam"
+                        class="w-form-label required"
                         >Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="aanvrager_naam"
-                        id="aanvrager_naam"
+                        name="contact_persoon_naam"
+                        id="contact_persoon_naam"
                         placeholder="Bijv. Jan Jansen"
-                        required
                       />
-                      <label for="aanvrager_email" class="w-form-label required"
+                      <label for="email" class="w-form-label required"
                         >E-mail</label
                       >
                       <input
                         type="email"
                         class="w-input"
                         maxlength="256"
-                        name="aanvrager_email"
-                        id="aanvrager_email"
+                        name="email"
+                        id="email"
                         placeholder="bijv. naam@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                        required
                       />
                       <label
-                        for="aanvrager_telnr1"
+                        for="contact_persoon_telnr1"
                         class="w-form-label required"
                         >Telefoonnummer</label
                       >
@@ -636,12 +648,11 @@
                         type="tel"
                         class="w-input"
                         maxlength="30"
-                        name="aanvrager_telnr1"
-                        id="aanvrager_telnr1"
+                        name="contact_persoon_telnr1"
+                        id="contact_persoon_telnr1"
                         placeholder="Bijv. +31 6 12345678"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
-                        required
                       />
                       <div
                         class="field-error aanvrager-telnr1-error"
@@ -655,44 +666,43 @@
                         Stichting / Organisatie gegevens
                       </h3>
 
-                      <label for="org_naam" class="w-form-label required"
+                      <label for="stichting_naam" class="w-form-label required"
                         >Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_naam"
-                        id="org_naam"
+                        name="stichting_naam"
+                        id="stichting_naam"
                         placeholder="Naam van de stichting/organisatie"
-                        required
                       />
 
-                      <label for="org_adres" class="w-form-label required"
+                      <label for="stichting_adres" class="w-form-label required"
                         >Postadres</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_adres"
-                        id="org_adres"
+                        name="stichting_adres"
+                        id="stichting_adres"
                         placeholder="Bijv. Hoofdstraat 123"
-                        required
                       />
 
-                      <label for="org_email" class="w-form-label required"
+                      <label
+                        for="stichting_e-mail"
+                        class="w-form-label required"
                         >E-mail</label
                       >
                       <input
-                        type="email"
+                        type="text"
                         class="w-input"
                         maxlength="256"
-                        name="org_email"
-                        id="org_email"
+                        name="stichting_e-mail"
+                        id="stichting_e-mail"
                         placeholder="bijv. info@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                        required
                       />
 
                       <label for="org_telnr" class="w-form-label required"
@@ -702,12 +712,11 @@
                         type="tel"
                         class="w-input"
                         maxlength="30"
-                        name="org_telnr"
-                        id="org_telnr"
+                        name="stichting_telnr"
+                        id="stichting_telnr"
                         placeholder="Bijv. +31 20 1234567"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
-                        required
                       />
                       <div
                         class="field-error org-telnr-error"
@@ -716,148 +725,444 @@
                         Voer een geldig telefoonnummer in (minimaal 6 cijfers).
                       </div>
 
-                      <label for="org_website" class="w-form-label required"
+                      <label for="stichting_website" class="w-form-label"
                         >Website</label
                       >
                       <input
                         type="url"
                         class="w-input"
                         maxlength="256"
-                        name="org_website"
-                        id="org_website"
+                        name="stichting_website"
+                        id="stichting_website"
                         placeholder="https://www.organisatie.nl"
                       />
 
-                      <label for="org_iban" class="w-form-label required"
+                      <label
+                        for="stichting_bankrekening"
+                        class="w-form-label required"
                         >Bankrekening nummer</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="34"
-                        name="org_iban"
-                        id="org_iban"
+                        name="stichting_bankrekening"
+                        id="stichting_bankrekening"
                         placeholder="NL91 ABNA 0417 1643 00"
-                        required
                       />
 
                       <!-- Section 3: Aanvraag -->
                       <h3 class="section-title">Aanvraag</h3>
 
-                      <label for="proj_naam" class="w-form-label required"
+                      <label for="project_naam" class="w-form-label required"
                         >Project Naam</label
                       >
                       <input
                         type="text"
                         class="w-input"
                         maxlength="256"
-                        name="proj_naam"
-                        id="proj_naam"
+                        name="project_naam"
+                        id="project_naam"
                         placeholder="Naam van de Project"
-                        required
                       />
 
-                      <label for="org_aanvraag" class="w-form-label required"
+                      <label
+                        for="project_omschrijving"
+                        class="w-form-label required"
                         >Project Omschrijving</label
                       >
                       <textarea
                         class="w-input"
-                        name="org_aanvraag"
-                        id="org_aanvraag"
+                        name="project_omschrijving"
+                        id="project_omschrijving"
                         placeholder="Beschrijf de doelstelling van de organisatie..."
-                        maxlength="50"
                         rows="4"
-                        required
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
                         0 / 50 woorden
                       </div>
-
-                      <label
-                        for="proj_start_datum"
-                        class="w-form-label required"
-                        >Startdatum project</label
-                      >
-                      <input
-                        type="date"
-                        class="w-input"
-                        name="proj_start_datum"
-                        id="proj_start_datum"
-                        required
-                      />
-
-                      <label for="proj_eind_datum" class="w-form-label required"
-                        >Einddatum project</label
-                      >
-                      <input
-                        type="date"
-                        class="w-input"
-                        name="proj_eind_datum"
-                        id="proj_eind_datum"
-                        required
-                      />
-
-                      <label for="proj_bedrag" class="w-form-label required"
+                      <label for="project_bedrag" class="w-form-label required"
                         >Gevraagd bedrag (€)</label
                       >
                       <input
                         type="number"
                         class="w-input"
-                        name="proj_bedrag"
-                        id="proj_bedrag"
+                        name="project_bedrag"
+                        id="project_bedrag"
                         placeholder="Bijv. 2500"
                         min="0"
                         step="0.01"
-                        required
                       />
 
-                      <label for="proj_categorie" class="w-form-label required"
+                      <label
+                        for="project_start_datum"
+                        class="w-form-label required"
+                        >Verwachte Startdatum project</label
+                      >
+                      <input
+                        type="date"
+                        class=""
+                        name="project_start_datum"
+                        id="project_start_datum"
+                      />
+
+                      <label
+                        for="project_eind_datum"
+                        class="w-form-label required"
+                        >Verwachte Einddatum project</label
+                      >
+                      <input
+                        type="date"
+                        class=""
+                        name="project_eind_datum"
+                        id="project_eind_datum"
+                      />
+
+                      <label
+                        for="project_categorie"
+                        class="w-form-label required"
                         >Project categorie</label
                       >
                       <select
                         class="w-input"
-                        name="proj_categorie"
-                        id="proj_categorie"
-                        required
+                        name="project_categorie"
+                        id="project_categorie"
                       >
                         <option value="">Selecteer een categorie</option>
-                        <option value="onderwijs">Onderwijs</option>
-                        <option value="gezondheid">Gezondheid</option>
-                        <option value="ontwikkelingshulp">
-                          Ontwikkelingshulp
-                        </option>
-                        <option value="milieu">Milieu & Duurzaamheid</option>
-                        <option value="kinderen">Kinderen & Jeugd</option>
-                        <option value="armoede">Armoede bestrijding</option>
+                        <option value="onderwijs">Noodhulp</option>
+                        <option value="gezondheid">Geondheid</option>
+                        <option value="ontwikkelingshulp">Onderwijs</option>
+                        <option value="milieu">Welzijn</option>
+                        <option value="kinderen">Natuur en milieu</option>
+                        <option value="armoede">Kunst en cultuur</option>
                         <option value="vrouwen">Vrouwen & Gelijkheid</option>
-                        <option value="infrastructuur">Infrastructuur</option>
-                        <option value="cultuur">Cultuur & Kunst</option>
-                        <option value="overig">Overig</option>
+                        <option value="infrastructuur">Anders</option>
                       </select>
+                      <label for="project_categorie_anders" class="w-form-label"
+                        >Indien anders</label
+                      >
+                      <input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="project_categorie_anders"
+                        id="project_categorie_anders"
+                        placeholder="https://www.organisatie.nl"
+                      />
+                      <label for="project_land" class="w-form-label required"
+                        >Land</label
+                      >
+                      <input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="project_land"
+                        id="project_land"
+                        placeholder="Nederland"
+                      />
+                      <label
+                        for="project_doelgroepen"
+                        class="w-form-label required"
+                        >Doelgroepen</label
+                      >
+                      <input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="project_doelgroepen"
+                        id="project_doelgroepen"
+                      />
+                      <label
+                        for="project_samenwerkings"
+                        class="w-form-label required"
+                        >Samenwerkings verband, bijv. andere stichting of
+                        NGO's</label
+                      >
+                      <input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="project_samenwerkings"
+                        id="project_samenwerkings"
+                      />
 
                       <!-- PDF Upload Section -->
                       <h3 class="section-title">Documenten</h3>
+                      <p
+                        style="
+                          font-size: 1em;
+                          color: #495057;
+                          margin-bottom: 20px;
+                          font-weight: 500;
+                        "
+                      >
+                        Upload hier de benodigde documenten voor uw aanvraag.
+                        Zorg ervoor dat alle documenten duidelijk leesbaar zijn
+                        en de juiste informatie bevatten.
+                      </p>
+
+                      <label class="w-form-label required"
+                        >Aanbiedingsbrief</label
+                      >
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="aanbiedingsbrief_check"
+                            value="ja"
+                            required
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="aanbiedingsbrief_check"
+                            value="nee"
+                            required
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een aanbiedingsbrief bijgevoegd in uw
+                        documenten?
+                      </p>
+
+                      <label class="w-form-label required"
+                        >Project Aanvraag</label
+                      >
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="project_aanvraag_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="project_aanvraag_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een project aanvraag bijgevoegd in uw
+                        documenten?
+                      </p>
+
+                      <label class="w-form-label required">Projectplan</label>
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="projectplan_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="projectplan_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een projectplan bijgevoegd in uw documenten?
+                      </p>
+
+                      <label class="w-form-label required">Begroting</label>
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="begroting_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="begroting_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een begroting bijgevoegd in uw documenten?
+                      </p>
+
+                      <label class="w-form-label required">Dekkingsplan</label>
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="dekkingsplan_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="dekkingsplan_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een dekkingsplan bijgevoegd in uw documenten?
+                      </p>
+
+                      <label class="w-form-label required"
+                        >Uittreksel Handelsregister (KvK)</label
+                      >
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="uittreksel_handelsregister_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="uittreksel_handelsregister_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een uittreksel andelsregister (KvK) bijgevoegd
+                        in uw documenten?
+                      </p>
+
+                      <label class="w-form-label required"
+                        >ANBI verklaring</label
+                      >
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="ANBI_verklaring_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="ANBI_verklaring_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een ANBI verklaring bijgevoegd in uw documenten?
+                      </p>
+
+                      <label class="w-form-label required">Statuten</label>
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="statuten_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="statuten_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u informatie over u statuten bijgevoegd in uw
+                        documenten?
+                      </p>
+
+                      <label class="w-form-label required"
+                        >Financieel Jaarverslag</label
+                      >
+                      <div style="margin: 10px 0; display: flex; gap: 20px">
+                        <label>
+                          <input
+                            type="radio"
+                            name="financieel_jaarverslag_check"
+                            value="ja"
+                          />
+                          Ja
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="financieel_jaarverslag_check"
+                            value="nee"
+                          />
+                          Nee
+                        </label>
+                      </div>
+                      <p class="radio-help-text">
+                        Heeft u een Financieel Jaarverslag bijgevoegd in uw
+                        documenten?
+                      </p>
+                      <p
+                        style="
+                          font-size: 1em;
+                          color: #495057;
+                          margin-bottom: 20px;
+                          font-weight: 500;
+                        "
+                      >
+                        alle aan te leveren documenten uploaden in 1
+                        gemeenschappelijke pdf.
+                      </p>
+
                       <label for="pdf" class="w-form-label required"
                         >PDF Document</label
                       >
                       <input
                         type="file"
-                        class="w-input"
+                        class=""
                         name="pdf"
                         id="pdf"
                         accept=".pdf"
-                        required
                       />
-                      <p
-                        style="
-                          font-size: 0.9em;
-                          color: #6c757d;
-                          margin-top: 5px;
-                        "
-                      >
+                      <p class="radio-help-text">
                         Upload een PDF document met aanvullende informatie over
                         uw aanvraag.
                       </p>
+                      <label for="vragen" class="w-form-label"
+                        >Vragen en/of opmerkingen</label
+                      >
+                      <textarea
+                        class="w-input"
+                        name="vragen"
+                        id="vragen"
+                        placeholder="Vragen over uw aanvraag..."
+                        rows="4"
+                      ></textarea>
+                      <div class="char-counter" id="doelstelling-counter">
+                        0 / 50 woorden
+                      </div>
                     </div>
                     <input
                       type="submit"
@@ -963,7 +1268,6 @@
                 data-w-id="ed1d3dfa-64ab-f559-94df-abfc633ec478"
                 class="div-block-15"
               ></div>
-              <p class="paragraph-6">WEBSITE BY SIRIAN</p>
               <div
                 data-w-id="ed1d3dfa-64ab-f559-94df-abfc633ec47b"
                 class="div-block-16"
@@ -1022,14 +1326,7 @@
             id="w-node-_5a8284b6-5c8b-200d-2430-f6f5e007a2ef-633ec467"
             class="div-block-14 mobile"
           >
-            <a
-              data-w-id="5a8284b6-5c8b-200d-2430-f6f5e007a2f0"
-              href="https://www.sirian.co"
-              target="_blank"
-              class="div-block-13 w-inline-block"
-            >
               <div class="div-block-15"></div>
-              <p class="paragraph-6">DESIGN BY SIRIAN</p>
               <div class="div-block-16"></div>
             </a>
           </div>
@@ -1206,7 +1503,7 @@
           }, 500);
         });
 
-        // Character counter for project description
+        // Word counter for project description
         $("#org_aanvraag").on("input", function () {
           var text = $(this).val();
           var wordCount =
@@ -1215,6 +1512,12 @@
 
           if (wordCount > 50) {
             $("#doelstelling-counter").css("color", "#dc3545");
+            // Prevent further input if word limit exceeded
+            var words = text.trim().split(/\s+/);
+            if (words.length > 50) {
+              words = words.slice(0, 50);
+              $(this).val(words.join(" "));
+            }
           } else {
             $("#doelstelling-counter").css("color", "#6c757d");
           }

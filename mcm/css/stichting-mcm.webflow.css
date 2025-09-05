@@ -1772,7 +1772,7 @@ a {
   margin-top: 10px;
   margin-bottom: 6px;
   font-family: Qanelas, sans-serif;
-  color: #fff;
+  color: #495057;
   font-weight: 700;
 }
 
@@ -1798,8 +1798,74 @@ a {
 
 .aanvraag-info .w-form-label.required::after {
   content: " *";
-  color: #ffffff;
-  opacity: 0.85;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Radio button styling for Ja/Nee options */
+.aanvraag-info input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ced4da;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.aanvraag-info input[type="radio"]:hover {
+  border-color: #ff6643;
+  box-shadow: 0 0 0 2px rgba(255, 102, 67, 0.1);
+}
+
+.aanvraag-info input[type="radio"]:checked {
+  border-color: #ff6643;
+  background-color: #ff6643;
+}
+
+.aanvraag-info input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.aanvraag-info input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 102, 67, 0.2);
+}
+
+/* Radio button label styling */
+.aanvraag-info label[for*="radio"] {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
+  margin-bottom: 8px;
+  color: #495057;
+  font-size: 16px;
+}
+
+.aanvraag-info label[for*="radio"]:hover {
+  color: #ff6643;
+}
+
+/* Radio button section help text styling */
+.aanvraag-info .radio-help-text {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 5px;
 }
 
 .aanvraag-info .w-input,
