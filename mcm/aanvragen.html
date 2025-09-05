@@ -197,82 +197,344 @@
         }
       }
 
-      /* Form section styling */
-      .form-section {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 25px;
+      /* FOURTH DESIGN - Wild & Creative Experimental Design */
+      
+      /* Main form container with psychedelic background */
+      .aanvraag-info {
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+          linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        border-radius: 30px;
+        padding: 0;
         margin: 30px 0;
-        border-left: 4px solid #007bff;
+        box-shadow: 
+          0 25px 50px rgba(0, 0, 0, 0.15),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
       }
 
+      .aanvraag-info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.03) 10px,
+            rgba(255, 255, 255, 0.03) 20px
+          );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .aanvraag-info > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Form sections with wild styling */
+      .form-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        padding: 40px;
+        margin: 30px;
+        border: none;
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.1),
+          0 0 0 1px rgba(255, 255, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        position: relative;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        backdrop-filter: blur(20px);
+      }
+
+      .form-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          #ff6b6b,
+          #4ecdc4,
+          #45b7d1,
+          #96ceb4,
+          #feca57,
+          #ff9ff3,
+          #54a0ff,
+          #ff6b6b
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        animation: rotate 20s linear infinite;
+        z-index: -1;
+      }
+
+      .form-section:hover::before {
+        opacity: 0.1;
+      }
+
+      .form-section:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 
+          0 30px 60px rgba(0, 0, 0, 0.2),
+          0 0 0 1px rgba(255, 255, 255, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      /* Section titles with wild typography */
       .form-section .section-title {
-        color: #007bff;
-        font-size: 1.3em;
-        margin-bottom: 25px;
-        font-weight: 600;
-        border-bottom: 2px solid #e9ecef;
-        padding-bottom: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2.2em;
+        margin-bottom: 35px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        position: relative;
+        animation: gradientShift 8s ease infinite;
+        text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
       }
 
+      .form-section .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+        border-radius: 2px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: translateX(-50%) scaleX(1); }
+        50% { transform: translateX(-50%) scaleX(1.2); }
+      }
+
+      /* Form fields with creative styling */
       .form-section .w-form-label {
-        font-weight: 500;
-        color: #495057;
-        margin-top: 15px;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 15px;
+        display: block;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .form-section .w-form-label::before {
+        content: '✨';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2em;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      @keyframes sparkle {
+        0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        50% { transform: scale(1.2) rotate(180deg); opacity: 0.7; }
       }
 
       .form-section .w-input {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        border: 3px solid transparent;
+        border-radius: 20px;
+        padding: 20px 25px;
+        font-size: 16px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: inherit;
+        position: relative;
       }
 
       .form-section .w-input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+          0 15px 35px rgba(102, 126, 234, 0.3),
+          0 0 0 5px rgba(102, 126, 234, 0.1);
+        outline: none;
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) border-box;
       }
 
       .form-section textarea {
-        min-height: 80px;
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+        border-radius: 20px;
       }
 
-      /* Gift section specific styling */
-      .gift-section {
-        background-color: #e7f3ff;
-        border-left: 4px solid #28a745;
+      /* Radio buttons with wild design */
+      .form-section input[type="radio"] {
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border: 3px solid #e2e8f0;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        position: relative;
+        margin-right: 15px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
-      .gift-section .section-title {
-        color: #28a745;
+      .form-section input[type="radio"]:checked {
+        border-color: #667eea;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        transform: scale(1.1);
+        box-shadow: 
+          0 0 20px rgba(102, 126, 234, 0.5),
+          inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-section input[type="radio"]:checked::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: bold;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-section label {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        cursor: pointer;
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      .form-section label:hover {
+        background: rgba(102, 126, 234, 0.1);
+        transform: translateX(10px);
+      }
+
+      /* File input with creative design */
+      .form-section input[type="file"] {
+        border: 3px dashed #cbd5e0;
+        border-radius: 25px;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        text-align: center;
+        color: #6b7280;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-section input[type="file"]::before {
+        content: '📁';
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2em;
+        opacity: 0.5;
+      }
+
+      .form-section input[type="file"]:hover {
+        border-color: #667eea;
+        background: linear-gradient(135deg, #f0f4ff, #e6f3ff);
+        color: #667eea;
+        transform: scale(1.02);
       }
 
       /* Character counter */
       .char-counter {
-        font-size: 0.8em;
-        color: #6c757d;
-        text-align: right;
-        margin-top: 5px;
-      }
-
-      /* Optional field indicator */
-      .optional-field {
-        color: #6c757d;
         font-size: 0.9em;
-        font-style: italic;
+        color: #667eea;
+        text-align: right;
+        margin-top: 10px;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       }
 
-      /* Required field asterisk styling */
+      /* Required field styling */
       .required::after {
-        content: " *";
-        color: #dc3545;
+        content: " ⭐";
+        color: #ff6b6b;
         font-weight: bold;
+        font-size: 1.2em;
+        animation: twinkle 1.5s ease-in-out infinite;
       }
 
-      /* Submit button with shine animation from design 3 */
+      @keyframes twinkle {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
+      }
+
+      /* Submit button with wild design */
       .w-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+        background-size: 400% 400%;
+        border: none;
+        border-radius: 50px;
+        padding: 25px 60px;
+        font-size: 20px;
+        font-weight: 800;
+        color: white;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+          0 15px 35px rgba(102, 126, 234, 0.4),
+          0 5px 15px rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        width: 100%;
+        margin-top: 40px;
         position: relative;
         overflow: hidden;
-        transition: all 0.3s ease;
+        animation: gradientShift 6s ease infinite;
       }
 
       .w-button::before {
@@ -282,12 +544,129 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.6s;
       }
 
       .w-button:hover::before {
         left: 100%;
+      }
+
+      .w-button:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 
+          0 25px 50px rgba(102, 126, 234, 0.6),
+          0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Error messages */
+      .field-error {
+        background: linear-gradient(135deg, #fed7d7, #feb2b2);
+        color: #c53030;
+        padding: 15px 20px;
+        border-radius: 15px;
+        margin-top: 10px;
+        font-size: 1em;
+        font-weight: 600;
+        border-left: 5px solid #e53e3e;
+        box-shadow: 0 5px 15px rgba(229, 62, 62, 0.2);
+      }
+
+      /* Help text */
+      .radio-help-text {
+        font-size: 1em;
+        color: #667eea;
+        margin-top: 10px;
+        font-style: italic;
+        font-weight: 500;
+      }
+
+      /* Date and select inputs */
+      .form-section input[type="date"],
+      .form-section select {
+        border: 3px solid transparent;
+        border-radius: 20px;
+        padding: 20px 25px;
+        font-size: 16px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .form-section input[type="date"]:focus,
+      .form-section select:focus {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+          0 15px 35px rgba(102, 126, 234, 0.3),
+          0 0 0 5px rgba(102, 126, 234, 0.1);
+        outline: none;
+      }
+
+      /* Number input styling */
+      .form-section input[type="number"] {
+        border: 3px solid transparent;
+        border-radius: 20px;
+        padding: 20px 25px;
+        font-size: 16px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+
+      .form-section input[type="number"]:focus {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+          0 15px 35px rgba(102, 126, 234, 0.3),
+          0 0 0 5px rgba(102, 126, 234, 0.1);
+        outline: none;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .aanvraag-info {
+          margin: 20px 0;
+          border-radius: 20px;
+        }
+        
+        .form-section {
+          padding: 25px;
+          margin: 20px;
+          border-radius: 20px;
+        }
+        
+        .form-section .section-title {
+          font-size: 1.8em;
+        }
+
+        .form-section:hover {
+          transform: translateY(-5px) scale(1.01);
+        }
+      }
+
+      /* Wild animation for form reveal */
+      .form-section {
+        opacity: 0;
+        transform: translateY(50px) rotateX(20deg);
+        animation: wildSlideIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      .form-section:nth-child(1) { animation-delay: 0.1s; }
+      .form-section:nth-child(2) { animation-delay: 0.3s; }
+      .form-section:nth-child(3) { animation-delay: 0.5s; }
+      .form-section:nth-child(4) { animation-delay: 0.7s; }
+
+      @keyframes wildSlideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0) rotateX(0deg);
+        }
       }
     </style>
     <script
@@ -606,7 +985,7 @@
               >
 
               <div class="aanvraag-info" style="display: none">
-                <h2 class="heading-12">Aanvraagformulier</h2>
+                <h2 class="heading-12" style="text-align: center; background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe); background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3em; margin-bottom: 50px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; animation: gradientShift 6s ease infinite; text-shadow: 0 0 40px rgba(102, 126, 234, 0.8);">Aanvraagformulier</h2>
                 <div class="w-form">
                   <form
                     id="aanvraag-form"
