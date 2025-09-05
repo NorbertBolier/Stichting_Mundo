@@ -197,49 +197,75 @@
         }
       }
 
-      /* Form section styling */
+      /* Basic form section styling */
       .form-section {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 25px;
-        margin: 30px 0;
-        border-left: 4px solid #007bff;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
       }
 
       .form-section .section-title {
-        color: #007bff;
-        font-size: 1.3em;
-        margin-bottom: 25px;
-        font-weight: 600;
-        border-bottom: 2px solid #e9ecef;
-        padding-bottom: 10px;
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 8px;
       }
 
       .form-section .w-form-label {
-        font-weight: 500;
-        color: #495057;
+        font-weight: 400;
+        color: #333;
         margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 14px;
       }
 
       .form-section .w-input {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 8px 12px;
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .form-section .w-input:focus {
         border-color: #007bff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        outline: none;
       }
 
       .form-section textarea {
         min-height: 80px;
+        resize: vertical;
+      }
+
+      /* Basic radio button styling */
+      .form-section input[type="radio"] {
+        margin-right: 8px;
+      }
+
+      .form-section label {
+        display: block;
+        margin: 10px 0;
+        font-size: 14px;
+        color: #333;
+      }
+
+      /* Basic file input styling */
+      .form-section input[type="file"] {
+        border: 1px solid #ccc;
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       /* Gift section specific styling */
       .gift-section {
-        background-color: #e7f3ff;
-        border-left: 4px solid #28a745;
+        background-color: #f8f9fa;
+        border-left: 3px solid #28a745;
       }
 
       .gift-section .section-title {
@@ -248,16 +274,16 @@
 
       /* Character counter */
       .char-counter {
-        font-size: 0.8em;
-        color: #6c757d;
+        font-size: 12px;
+        color: #666;
         text-align: right;
         margin-top: 5px;
       }
 
       /* Optional field indicator */
       .optional-field {
-        color: #6c757d;
-        font-size: 0.9em;
+        color: #666;
+        font-size: 12px;
         font-style: italic;
       }
 
@@ -266,6 +292,54 @@
         content: " *";
         color: #dc3545;
         font-weight: bold;
+      }
+
+      /* Basic error messages */
+      .field-error {
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      /* Basic help text */
+      .radio-help-text {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+      }
+
+      /* Basic submit button */
+      .w-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .w-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Basic initial button */
+      .button.aanvragen {
+        background-color: #fd7e14 !important;
+        color: white !important;
+        border: none !important;
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+        border-radius: 3px !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+      }
+
+      .button.aanvragen:hover {
+        background-color: #e8590c !important;
       }
     </style>
     <script
@@ -1504,7 +1578,7 @@
         });
 
         // Word counter for project description
-        $("#org_aanvraag").on("input", function () {
+        $("#project_omschrijving").on("input", function () {
           var text = $(this).val();
           var wordCount =
             text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
