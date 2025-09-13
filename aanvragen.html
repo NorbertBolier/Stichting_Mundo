@@ -848,14 +848,14 @@
               ‍<br />2. Aanvragen worden alleen in behandeling genomen indien zij via het online aanvraagformulier zijn ingediend.<br />
               ‍<br />3. Telefonisch contact naar aanleiding van de status van de aanvraag stellen wij niet op prijs.<br />
               ‍ <br />4.   MCM verstrekt geen bijdragen aan <br />
-                <ul>Individuele personen,</ul>
-                <ul>restauraties</ul>
-                <ul>verbouwingsplannen</ul>
-                <ul>inrichtingskosten</ul>
-                <ul>filmproducties</ul>
-                <ul>studiereizen</ul>
-                <ul>proefschriften en afstudeerprojecten</ul>
-                <ul>congressen en festiviteiten</ul>
+                &nbsp; - Individuele personen,<br />
+                &nbsp; - restauraties<br />
+                &nbsp; - verbouwingsplannen<br />
+                &nbsp; - inrichtingskosten<br />
+                &nbsp; - filmproducties<br />
+                &nbsp; - studiereizen<br />
+                &nbsp; - proefschriften en afstudeerprojecten<br />
+                &nbsp; - congressen en festiviteiten<br />
                 tenzij deze de doelstellingen van MCM juist sterk ondersteunen.
 <br />
               ‍<br />5. Om voor een bijdrage in aanmerking te komen moet een concrete, schriftelijke, projectaanvraag worden ingediend. Alleen aanvragen voorzien van een projectplan met een begroting, dekkingsplan en tijdsplanning worden in behandeling genomen. De begroting moet duidelijk inzicht geven in waar het geld precies aan wordt uitgegeven.Het bevat tevens informatie over de eigen bijdrage aan het project, lokale/regionale/landelijke subsidies en mogelijke samenwerkingsverbanden en partners.<br />
@@ -1090,7 +1090,7 @@
                         rows="4"
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
-                        0 / 50 woorden
+                        0 / 250 karakters
                       </div>
                       <label for="project_bedrag" class="w-form-label required"
                         >Gevraagd bedrag (€)</label
@@ -1465,8 +1465,8 @@
                         placeholder="Vragen over uw aanvraag..."
                         rows="4"
                       ></textarea>
-                      <div class="char-counter" id="doelstelling-counter">
-                        0 / 50 woorden
+                      <div class="char-counter" id="vragen-counter">
+                        0 / 250 karakters
                       </div>
                     </div>
                     <input
@@ -1808,23 +1808,39 @@
           }, 500);
         });
 
-        // Word counter for project description
+        // Character counter for project description
         $("#project_omschrijving").on("input", function () {
           var text = $(this).val();
-          var wordCount =
-            text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
-          $("#doelstelling-counter").text(wordCount + " / 50 woorden");
+          var charCount = text.length;
+          $("#doelstelling-counter").text(charCount + " / 250 karakters");
 
-          if (wordCount > 50) {
+          if (charCount > 250) {
             $("#doelstelling-counter").css("color", "#dc3545");
-            // Prevent further input if word limit exceeded
-            var words = text.trim().split(/\s+/);
-            if (words.length > 50) {
-              words = words.slice(0, 50);
-              $(this).val(words.join(" "));
+            // Prevent further input if character limit exceeded
+            if (text.length > 250) {
+              $(this).val(text.substring(0, 250));
+              $("#doelstelling-counter").text("250 / 250 karakters");
             }
           } else {
             $("#doelstelling-counter").css("color", "#6c757d");
+          }
+        });
+
+        // Character counter for questions/comments
+        $("#vragen").on("input", function () {
+          var text = $(this).val();
+          var charCount = text.length;
+          $("#vragen-counter").text(charCount + " / 250 karakters");
+
+          if (charCount > 250) {
+            $("#vragen-counter").css("color", "#dc3545");
+            // Prevent further input if character limit exceeded
+            if (text.length > 250) {
+              $(this).val(text.substring(0, 250));
+              $("#vragen-counter").text("250 / 250 karakters");
+            }
+          } else {
+            $("#vragen-counter").css("color", "#6c757d");
           }
         });
       });
