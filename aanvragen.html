@@ -197,22 +197,89 @@
         }
       }
 
-      /* Form section styling */
+      /* Enhanced form section styling with design 4 features */
       .form-section {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 25px;
+        background: rgba(248, 249, 250, 0.95);
+        border-radius: 15px;
+        padding: 30px;
         margin: 30px 0;
         border-left: 4px solid #007bff;
+        box-shadow: 
+          0 10px 25px rgba(0, 0, 0, 0.08),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .form-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          #007bff,
+          #0056b3,
+          #004085,
+          #007bff
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        animation: rotate 30s linear infinite;
+        z-index: -1;
+      }
+
+      .form-section:hover::before {
+        opacity: 0.05;
+      }
+
+      .form-section:hover {
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: 
+          0 15px 35px rgba(0, 0, 0, 0.12),
+          0 0 0 1px rgba(255, 255, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
       }
 
       .form-section .section-title {
         color: #007bff;
-        font-size: 1.3em;
-        margin-bottom: 25px;
-        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        font-weight: 700;
         border-bottom: 2px solid #e9ecef;
-        padding-bottom: 10px;
+        padding-bottom: 15px;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .form-section .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #007bff, #0056b3, #004085);
+        border-radius: 2px;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: translateX(-50%) scaleX(1); }
+        50% { transform: translateX(-50%) scaleX(1.3); }
       }
 
       .form-section .w-form-label {
@@ -222,18 +289,111 @@
       }
 
       .form-section .w-input {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        border: 2px solid #ced4da;
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: #ffffff;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: inherit;
+        position: relative;
       }
 
       .form-section .w-input:focus {
         border-color: #007bff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        box-shadow: 
+          0 0 0 3px rgba(0, 123, 255, 0.15),
+          0 5px 15px rgba(0, 123, 255, 0.2);
+        outline: none;
+        transform: translateY(-2px);
       }
 
-      .form-section textarea {
-        min-height: 80px;
+      .form-section textarea,
+      .form-section textarea.w-input {
+        min-height: 100px !important;
+        resize: vertical;
+        font-family: inherit;
+        border-radius: 10px !important;
+        border: 2px solid #ced4da !important;
+        padding: 15px 20px !important;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        background: #ffffff !important;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .form-section textarea:focus,
+      .form-section textarea.w-input:focus {
+        border-color: #007bff !important;
+        box-shadow: 
+          0 0 0 3px rgba(0, 123, 255, 0.15),
+          0 5px 15px rgba(0, 123, 255, 0.2) !important;
+        outline: none !important;
+        transform: translateY(-2px) !important;
+      }
+
+      /* Enhanced radio button styling */
+      .form-section input[type="radio"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ced4da;
+        border-radius: 50%;
+        background: #ffffff;
+        position: relative;
+        margin-right: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-section input[type="radio"]:checked {
+        border-color: #fd7e14;
+        background: #fd7e14;
+        transform: scale(1.1);
+        box-shadow: 
+          0 0 15px rgba(253, 126, 20, 0.4),
+          inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-section label {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        cursor: pointer;
+        font-weight: 500;
+        color: #495057;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        padding: 8px;
+        border-radius: 8px;
+      }
+
+      /* Enhanced file input styling */
+      .form-section input[type="file"] {
+        border: 2px dashed #ced4da;
+        border-radius: 12px;
+        padding: 25px 20px;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        color: #6c757d;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-section input[type="file"]:hover {
+        border-color: #007bff;
+        background: linear-gradient(135deg, #e7f3ff, #d1ecf1);
+        color: #007bff;
+        transform: scale(1.01);
       }
 
       /* Gift section specific styling */
@@ -248,10 +408,11 @@
 
       /* Character counter */
       .char-counter {
-        font-size: 0.8em;
-        color: #6c757d;
+        font-size: 0.9em;
+        color: #007bff;
         text-align: right;
-        margin-top: 5px;
+        margin-top: 8px;
+        font-weight: 500;
       }
 
       /* Optional field indicator */
@@ -266,6 +427,168 @@
         content: " *";
         color: #dc3545;
         font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      /* Enhanced date and select inputs */
+      .form-section input[type="date"],
+      .form-section select {
+        border: 2px solid #ced4da;
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: #ffffff;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .form-section input[type="date"]:focus,
+      .form-section select:focus {
+        border-color: #007bff;
+        box-shadow: 
+          0 0 0 3px rgba(0, 123, 255, 0.15),
+          0 5px 15px rgba(0, 123, 255, 0.2);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      /* Enhanced number input styling */
+      .form-section input[type="number"] {
+        border: 2px solid #ced4da;
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: #ffffff;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+
+      .form-section input[type="number"]:focus {
+        border-color: #007bff;
+        box-shadow: 
+          0 0 0 3px rgba(0, 123, 255, 0.15),
+          0 5px 15px rgba(0, 123, 255, 0.2);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      /* Enhanced error messages */
+      .field-error {
+        background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+        color: #721c24;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-top: 8px;
+        font-size: 0.9em;
+        font-weight: 500;
+        border-left: 4px solid #dc3545;
+        box-shadow: 0 3px 10px rgba(220, 53, 69, 0.15);
+      }
+
+      /* Enhanced help text */
+      .radio-help-text {
+        font-size: 0.9em;
+        color: #007bff;
+        margin-top: 8px;
+        font-style: italic;
+        font-weight: 500;
+      }
+
+      /* Enhanced submit button with design 4 features */
+      .w-button {
+        background: #007bff;
+        border: none;
+        border-radius: 25px;
+        padding: 18px 40px;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+          0 8px 25px rgba(0, 123, 255, 0.3),
+          0 3px 10px rgba(0, 0, 0, 0.1);
+        letter-spacing: 1px;
+        width: 100%;
+        margin-top: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .w-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s;
+      }
+
+      .w-button:hover::before {
+        left: 100%;
+      }
+
+      .w-button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+          0 15px 35px rgba(0, 123, 255, 0.4),
+          0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Initial button styling - match form background orange */
+      .button.aanvragen {
+        background: #e8590c !important;
+        box-shadow: 
+          0 8px 25px rgba(232, 89, 12, 0.3),
+          0 3px 10px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .button.aanvragen:hover {
+        box-shadow: 
+          0 15px 35px rgba(232, 89, 12, 0.4),
+          0 5px 15px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .form-section {
+          padding: 25px;
+          margin: 20px 0;
+        }
+        
+        .form-section .section-title {
+          font-size: 1.3em;
+        }
+
+        .form-section:hover {
+          transform: translateY(-3px) scale(1.005);
+        }
+      }
+
+      /* Subtle animation for form reveal */
+      .form-section {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: gentleSlideIn 0.8s ease forwards;
+      }
+
+      .form-section:nth-child(1) { animation-delay: 0.1s; }
+      .form-section:nth-child(2) { animation-delay: 0.2s; }
+      .form-section:nth-child(3) { animation-delay: 0.3s; }
+      .form-section:nth-child(4) { animation-delay: 0.4s; }
+
+      @keyframes gentleSlideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
     <script
@@ -503,62 +826,41 @@
               style="opacity: 0"
               class="text-block"
             >
-              Gelieve eerst deze voorwaarden door te lezen voordat u verder
-              gaat.
+              Stichting Mundo Crastino Meliori (MCM) ondersteunt projecten die een algemeen humanitair of maatschappelijk belang beogen.
             </div>
             <p
               data-w-id="ac780ed9-e602-4da4-1d50-c80cd49d9833"
               style="opacity: 0"
               class="paragraph-7"
             >
-              1. De stichting behoudt zich het recht voor aanvragen die niet aan
-              de richtlijnen voldoen, niet in behandeling te nemen.<br />
-              ‍<br />2. Aanvragen via email worden niet in behandeling
-              genomen.<br />
-              ‍<br />3. Telefonisch contact naar aanleiding van de status van de
-              aanvraag stellen wij niet op prijs.<br />
-              ‍ <br />4. Geen bijdragen worden verstrekt aan individuele
-              personen.<br />
-              ‍<br />5. Eveneens worden geen bijdragen verstrekt aan
-              restauraties verbouwingsplannen, inrichtingskosten,
-              filmproducties, studiereizen, proefschriften en
-              afstudeerprojecten, congressen en festiviteiten, tenzij deze de
-              doelstellingen van de stichting juist sterk ondersteunen.<br />
-              ‍<br />6. Binnen de statutaire doelstelling wordt geen enkele
-              doelgroep uitgesloten, maar wel extra aandacht gegeven aan
-              ondersteuning van kansarmen die in een minder bevoorrechte positie
-              leven en aan projecten die de kansen voor kinderen vergroten.<br />‍
-              <br />7. Om voor een uitkering in aanmerking te komen moet een
-              concrete, schriftelijke, projectaanvraag worden ingediend. Alleen
-              aanvragen voorzien van een projectplan met een begroting,
-              dekkingsplan en tijdsplanning worden in behandeling genomen. De
-              begroting moet duidelijk inzicht geven in waar het geld precies
-              aan wordt uitgegeven.<br />
-              <br />Graag vernemen wij ook informatie over de eigen bijdrage aan
-              het project, lokale/regionale/landelijke subsidies en mogelijke
-              samenwerkingsverbanden, partners in het project.<br />
-              <br />De naam van de stichting, Mundo crastino meliori staat voor
-              ‘op weg naar een betere wereld’. Wij willen dit gegeven graag als
-              aandachtspunt meegeven. Dus bijvoorbeeld: Wat is de meerwaarde van
-              uw projectaanvraag voor de omgeving, de wereld en of de aarde en
-              het klimaat in het algemeen. <br />
-              ‍<br />8. Besluitvorming door het Bestuur ten aanzien van giften
-              vindt tweemaal per jaar plaats. Aanvragen die na 1 mei worden
-              ontvangen worden pas in december door het Bestuur afgehandeld, en
-              die na 1 november binnenkomen pas in juni van het volgende
-              jaar.<br />
-              ‍<br />9. Organisaties krijgen ten hoogste eenmaal per jaar een
+              MCM heeft een aantal richtlijnen geformuleerd. Aanvragen die niet aan de onderstaande richtlijnen voldoen, worden niet in behandeling genomen.<br />
+              ‍<br />
+              1. Binnen de statutaire doelstelling wordt geen enkele doelgroep uitgesloten, maar wel extra aandacht gegeven aan ondersteuning van kansarmen die in een minder bevoorrechte positie leven en aan projecten die de kansen voor kinderen vergroten.‍<br />
+              ‍<br />2. Aanvragen worden alleen in behandeling genomen indien zij via het online aanvraagformulier zijn ingediend.<br />
+              ‍<br />3. Telefonisch contact naar aanleiding van de status van de aanvraag stellen wij niet op prijs.<br />
+              ‍ <br />4.   MCM verstrekt geen bijdragen aan <br />
+                &nbsp; - Individuele personen,<br />
+                &nbsp; - restauraties<br />
+                &nbsp; - verbouwingsplannen<br />
+                &nbsp; - inrichtingskosten<br />
+                &nbsp; - filmproducties<br />
+                &nbsp; - studiereizen<br />
+                &nbsp; - proefschriften en afstudeerprojecten<br />
+                &nbsp; - congressen en festiviteiten<br />
+                tenzij deze de doelstellingen van MCM juist sterk ondersteunen.
+<br />
+              ‍<br />5. Om voor een bijdrage in aanmerking te komen moet een concrete, schriftelijke, projectaanvraag worden ingediend. Alleen aanvragen voorzien van een projectplan met een begroting, dekkingsplan en tijdsplanning worden in behandeling genomen. De begroting moet duidelijk inzicht geven in waar het geld precies aan wordt uitgegeven. Het bevat tevens informatie over de eigen bijdrage aan het project, lokale/regionale/landelijke subsidies en mogelijke samenwerkingsverbanden en partners.<br />
+              ‍<br />6. De naam   Mundo Crastino Meliori (MCM) staat voor ‘op weg naar een betere wereld’. Wij willen dit gegeven graag als aandachtspunt meegeven. Dus bijvoorbeeld: Wat is de meerwaarde van uw projectaanvraag voor de omgeving, de wereld en of de aarde en het klimaat in het algemeen.<br />‍
+              <br />7. Besluitvorming door het Bestuur ten aanzien van bijdragen vindt tweemaal per jaar plaats. Aanvragen die na 1 mei worden ontvangen worden pas in december door het Bestuur afgehandeld, en die na 1 november binnenkomen pas in juni van het volgende jaar.<br />
+              <br />8. Organisaties krijgen ten hoogste eenmaal per jaar een bijdrage toegekend. Het bedrag dat wij toekennen is in de regel maximaal 2500 euro per jaar.<br />
+              <br />
+              9. Indien een bijdrage is toegekend en aan u is overgemaakt, dient u een bericht van ontvangst te sturen, voorzien van het bedrag en de datum van ontvangst.‍<br />
+              ‍<br />10. Binnen 2 maanden na afloop van het project dient u een beknopt verslag in te dienen over het verloop van het project, inclusief een financiële verantwoording. Het ontvangen van verslaglegging speelt een rol bij het toekennen van een eventuele gift in de toekomst.Ik heb de bovenstaande voorwaarden gelezen<br />
+              ‍<br />
+              11. Organisaties krijgen ten hoogste eenmaal per jaar een
               gift toegekend. Het bedrag dat wij toekennen is in de regel
               maximaal 2500 euro per jaar.
               <br />
-              ‍<br />10. Indien er een gift is toegekend, verwachten wij zo
-              spoedig mogelijk een bericht van goede ontvangst, voorzien van het
-              bedrag en datum.<br />
-              ‍<br />11. Ook willen wij, bij toekenning van een gift, binnen 2
-              maanden na afloop van het project een beknopt verslag van u
-              ontvangen over het verloop van het project, inclusief een
-              financiële verantwoording. Het ontvangen van verslaglegging speelt
-              een rol bij het toekennen van een eventuele gift in de toekomst.
             </p>
             <div
               data-w-id="1c5163f6-00b8-f797-08ec-5bdd35113e49"
@@ -580,7 +882,9 @@
                   display: flex;
                 "
                 class="button aanvragen w-button"
-                >Ik heb de bovenstaande voorwaarden gelezen</a
+                >Klik op deze knop om bij het aanvraagformulier te komen.<br /> 
+Alle velden voorzien van een sterretje invullen alvorens het formulier in te sturen.»
+</a
               >
 
               <div class="aanvraag-info" style="display: none">
@@ -663,7 +967,7 @@
 
                       <!-- Section 2: Stichting/Organisatie Gegevens -->
                       <h3 class="section-title">
-                        Stichting / Organisatie gegevens
+                        Stichting gegevens
                       </h3>
 
                       <label for="stichting_naam" class="w-form-label required"
@@ -675,7 +979,7 @@
                         maxlength="256"
                         name="stichting_naam"
                         id="stichting_naam"
-                        placeholder="Naam van de stichting/organisatie"
+                        placeholder="Naam van de stichting"
                       />
 
                       <label for="stichting_adres" class="w-form-label required"
@@ -701,7 +1005,7 @@
                         maxlength="256"
                         name="stichting_e-mail"
                         id="stichting_e-mail"
-                        placeholder="bijv. info@organisatie.nl"
+                        placeholder="Bijv. info@stichting.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                       />
 
@@ -734,7 +1038,7 @@
                         maxlength="256"
                         name="stichting_website"
                         id="stichting_website"
-                        placeholder="https://www.organisatie.nl"
+                        placeholder="https://www.stichting.nl"
                       />
 
                       <label
@@ -763,7 +1067,7 @@
                         maxlength="256"
                         name="project_naam"
                         id="project_naam"
-                        placeholder="Naam van de Project"
+                        placeholder="Naam van het Project"
                       />
 
                       <label
@@ -775,11 +1079,11 @@
                         class="w-input"
                         name="project_omschrijving"
                         id="project_omschrijving"
-                        placeholder="Beschrijf de doelstelling van de organisatie..."
+                        placeholder="Samenvatting van het project"
                         rows="4"
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
-                        0 / 50 woorden
+                        0 / 250 karakters
                       </div>
                       <label for="project_bedrag" class="w-form-label required"
                         >Gevraagd bedrag (€)</label
@@ -789,7 +1093,7 @@
                         class="w-input"
                         name="project_bedrag"
                         id="project_bedrag"
-                        placeholder="Bijv. 2500"
+                        placeholder="Bijv. 1500"
                         min="0"
                         step="0.01"
                       />
@@ -847,7 +1151,6 @@
                         maxlength="256"
                         name="project_categorie_anders"
                         id="project_categorie_anders"
-                        placeholder="https://www.organisatie.nl"
                       />
                       <label for="project_land" class="w-form-label required"
                         >Land</label
@@ -858,12 +1161,11 @@
                         maxlength="256"
                         name="project_land"
                         id="project_land"
-                        placeholder="Nederland"
                       />
                       <label
                         for="project_doelgroepen"
                         class="w-form-label required"
-                        >Doelgroepen</label
+                        >Doelgroep (en)</label
                       >
                       <input
                         type="text"
@@ -875,7 +1177,7 @@
                       <label
                         for="project_samenwerkings"
                         class="w-form-label required"
-                        >Samenwerkings verband, bijv. andere stichting of
+                        >Samenwerkings verband, bijv. andere stichtingen of
                         NGO's</label
                       >
                       <input
@@ -902,7 +1204,7 @@
                       </p>
 
                       <label class="w-form-label required"
-                        >Aanbiedingsbrief</label
+                        >Begeleidende brief</label
                       >
                       <div style="margin: 10px 0; display: flex; gap: 20px">
                         <label>
@@ -925,7 +1227,7 @@
                         </label>
                       </div>
                       <p class="radio-help-text">
-                        Heeft u een aanbiedingsbrief bijgevoegd in uw
+                        Heeft u een Begeleidende brief bijgevoegd in uw
                         documenten?
                       </p>
 
@@ -1046,12 +1348,11 @@
                         </label>
                       </div>
                       <p class="radio-help-text">
-                        Heeft u een uittreksel andelsregister (KvK) bijgevoegd
-                        in uw documenten?
+                        Heeft u een uittreksel handelsregister (KvK) bijgevoegd in uw documenten?
                       </p>
 
                       <label class="w-form-label required"
-                        >ANBI verklaring</label
+                        >ANBI status</label
                       >
                       <div style="margin: 10px 0; display: flex; gap: 20px">
                         <label>
@@ -1071,9 +1372,6 @@
                           Nee
                         </label>
                       </div>
-                      <p class="radio-help-text">
-                        Heeft u een ANBI verklaring bijgevoegd in uw documenten?
-                      </p>
 
                       <label class="w-form-label required">Statuten</label>
                       <div style="margin: 10px 0; display: flex; gap: 20px">
@@ -1095,8 +1393,7 @@
                         </label>
                       </div>
                       <p class="radio-help-text">
-                        Heeft u informatie over u statuten bijgevoegd in uw
-                        documenten?
+                        Heeft u  uw statuten bijgevoegd in uw documenten?
                       </p>
 
                       <label class="w-form-label required"
@@ -1132,8 +1429,7 @@
                           font-weight: 500;
                         "
                       >
-                        alle aan te leveren documenten uploaden in 1
-                        gemeenschappelijke pdf.
+                        Alle aan te leveren documenten uploaden in 1 pdf.
                       </p>
 
                       <label for="pdf" class="w-form-label required"
@@ -1147,8 +1443,7 @@
                         accept=".pdf"
                       />
                       <p class="radio-help-text">
-                        Upload een PDF document met aanvullende informatie over
-                        uw aanvraag.
+                        Upload een pdf met alle gevraagde documenten over uw aanvraag.
                       </p>
                       <label for="vragen" class="w-form-label"
                         >Vragen en/of opmerkingen</label
@@ -1160,8 +1455,8 @@
                         placeholder="Vragen over uw aanvraag..."
                         rows="4"
                       ></textarea>
-                      <div class="char-counter" id="doelstelling-counter">
-                        0 / 50 woorden
+                      <div class="char-counter" id="vragen-counter">
+                        0 / 250 karakters
                       </div>
                     </div>
                     <input
@@ -1503,23 +1798,39 @@
           }, 500);
         });
 
-        // Word counter for project description
-        $("#org_aanvraag").on("input", function () {
+        // Character counter for project description
+        $("#project_omschrijving").on("input", function () {
           var text = $(this).val();
-          var wordCount =
-            text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
-          $("#doelstelling-counter").text(wordCount + " / 50 woorden");
+          var charCount = text.length;
+          $("#doelstelling-counter").text(charCount + " / 250 karakters");
 
-          if (wordCount > 50) {
+          if (charCount > 250) {
             $("#doelstelling-counter").css("color", "#dc3545");
-            // Prevent further input if word limit exceeded
-            var words = text.trim().split(/\s+/);
-            if (words.length > 50) {
-              words = words.slice(0, 50);
-              $(this).val(words.join(" "));
+            // Prevent further input if character limit exceeded
+            if (text.length > 250) {
+              $(this).val(text.substring(0, 250));
+              $("#doelstelling-counter").text("250 / 250 karakters");
             }
           } else {
             $("#doelstelling-counter").css("color", "#6c757d");
+          }
+        });
+
+        // Character counter for questions/comments
+        $("#vragen").on("input", function () {
+          var text = $(this).val();
+          var charCount = text.length;
+          $("#vragen-counter").text(charCount + " / 250 karakters");
+
+          if (charCount > 250) {
+            $("#vragen-counter").css("color", "#dc3545");
+            // Prevent further input if character limit exceeded
+            if (text.length > 250) {
+              $(this).val(text.substring(0, 250));
+              $("#vragen-counter").text("250 / 250 karakters");
+            }
+          } else {
+            $("#vragen-counter").css("color", "#6c757d");
           }
         });
       });
