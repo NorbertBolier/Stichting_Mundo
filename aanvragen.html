@@ -590,6 +590,36 @@
           transform: translateY(0);
         }
       }
+      /* Keep the right image column from shifting when the form opens */
+      @media (min-width: 768px) {
+        .grid-4 {
+          position: sticky;
+          top: 140px;
+          align-self: start;
+          height: max-content;
+        }
+      }
+      /* Make right image column visually longer on desktop */
+      @media (min-width: 992px) {
+        .grid-4 .aanvraag-image-wrapper {
+          height: 420px;
+        }
+        .grid-4 .aanvraag-image-wrapper {
+          -webkit-transform: rotate(-9deg) scale(1);
+          -ms-transform: rotate(-9deg) scale(1);
+          transform: rotate(-9deg) scale(1);
+        }
+        .grid-4 .aanvraag-image-wrapper._2 {
+          -webkit-transform: rotate(10deg) scale(1);
+          -ms-transform: rotate(10deg) scale(1);
+          transform: rotate(10deg) scale(1);
+        }
+        .grid-4 .aanvraag-image-wrapper._3 {
+          -webkit-transform: rotate(-15deg) scale(1);
+          -ms-transform: rotate(-15deg) scale(1);
+          transform: rotate(-15deg) scale(1);
+        }
+      }
     </style>
     <script
       src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
@@ -894,18 +924,18 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                     id="aanvraag-form"
                     name="aanvraag-form"
                     method="POST"
-                    action="https://formsubmit.co/info@mundocrastinomeliori.nl"
+                    action="https://formsubmit.co/info@mundocrastinomeliori.nl" 
                     accept-charset="UTF-8"
                     enctype="multipart/form-data"
                     target="formsubmit_iframe"
                   >
+                  <!-- action="https://formsubmit.co/info@mundocrastinomeliori.nl" -->
                     <input
                       type="hidden"
                       name="_subject"
                       value="Nieuwe aanvraag via website - MCM"
                     />
                     <input type="hidden" name="_template" value="table" />
-                    <input type="hidden" name="_cc" value="norbertbolier@outlook.com">
                     <input type="hidden" name="_captcha" value="false" />
                     <!-- Autoresponse will only work when captcha is enabled but for this you must be on a live server not locally-->
                     <input
