@@ -913,8 +913,8 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                       value="Nieuwe aanvraag via website - MCM"
                     />
                     <input type="hidden" name="_template" value="table" />
-                    <!--<input type="hidden" name="_next" value="https://norbertbolier.github.io/Stichting_Mundo/aanvragen.html?success=true">-->
-                     <input type="hidden" name="_next" value="https://mundocrastinomeliori.nl/aanvragen.html?success=true">
+                    <!-- _next is set at runtime to the current domain by script below -->
+                    <input type="hidden" name="_next" value="" />
                     <input type="hidden" name="_captcha" value="false" />
                     <!-- Autoresponse will only work when captcha is enabled but for this you must be on a live server not locally-->
                     <input
@@ -1151,14 +1151,14 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         >Project categorie</label
                       >
                       <select
-                        class="w-input"
+                        class="w-select"
                         name="project_categorie"
                         id="project_categorie"
                         required
                       >
                         <option value="">Selecteer een categorie</option>
                         <option value="onderwijs">Noodhulp</option>
-                        <option value="gezondheid">Geondheid</option>
+                        <option value="gezondheid">Gezondheid</option>
                         <option value="ontwikkelingshulp">Onderwijs</option>
                         <option value="milieu">Welzijn</option>
                         <option value="kinderen">Natuur en milieu</option>
@@ -1900,6 +1900,41 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
           }
         });
       });
+    </script>
+    <script>
+      // Improve submission reliability on Android/Samsung Internet
+      (function () {
+        var form = document.getElementById('aanvraag-form');
+        if (!form) return;
+
+        // Always set _next to current domain so redirect is same-origin
+        var nextInput = form.querySelector('input[name="_next"]');
+        if (nextInput) {
+          var nextUrl = window.location.origin + '/aanvragen.html?success=true';
+          nextInput.value = nextUrl;
+        }
+
+        // On Android/Samsung browsers, ensure direct submit (no iframe)
+        var isAndroid = /Android|SamsungBrowser/i.test(navigator.userAgent);
+        if (isAndroid && form.hasAttribute('target')) {
+          form.removeAttribute('target');
+        }
+
+        // Prevent accidental double submit on tap
+        form.addEventListener('submit', function () {
+          var btn = form.querySelector("button[type='submit'], input[type='submit']");
+          if (btn) {
+            btn.disabled = true;
+            if (btn.tagName === 'INPUT') {
+              btn.setAttribute('data-original', btn.value);
+              btn.value = 'Even geduld...';
+            } else {
+              btn.setAttribute('data-original', btn.textContent);
+              btn.textContent = 'Even geduld...';
+            }
+          }
+        }, { once: true });
+      })();
     </script>
   </body>
 </html>

@@ -1885,6 +1885,32 @@ a {
   margin-bottom: 14px;
 }
 
+/* Ensure select values/options are visible in Chrome/Android */
+.aanvraag-info select.w-select {
+  color: #1a1a1a;
+  background-color: #fff;
+}
+.aanvraag-info select.w-select option {
+  color: #1a1a1a;
+}
+
+/* Prevent clipping of inputs/selects within the aanvraag form */
+.aanvraag-info,
+.aanvraag-info .w-form,
+.aanvraag-info .form-section {
+  overflow: visible;
+}
+
+/* Ensure the select control isn't visually cropped */
+.aanvraag-info select.w-select {
+  min-height: 44px;
+  line-height: 1.3;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-appearance: menulist;
+  appearance: menulist;
+}
+
 .aanvraag-info .w-input:focus,
 .aanvraag-info textarea.w-input:focus,
 .aanvraag-info .w-select:focus,
