@@ -892,7 +892,7 @@
                 "
                 class="button aanvragen w-button"
                 >Klik op deze knop om bij het aanvraagformulier te komen.<br /> 
-Alle velden voorzien van een sterretje invullen alvorens het formulier in te sturen.»
+Alle velden voorzien van een sterretje invullen alvorens het formulier in te sturen.
 </a
               >
 
@@ -906,7 +906,6 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                     action="https://formsubmit.co/info@mundocrastinomeliori.nl" 
                     accept-charset="UTF-8"
                     enctype="multipart/form-data"
-                    target="formsubmit_iframe"
                   >
                   <!-- ADD THIS LINE -> target="formsubmit_iframe" TO THE FORM TAG -->
                   <!-- action="https://formsubmit.co/info@mundocrastinomeliori.nl" -->
@@ -916,6 +915,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                       value="Nieuwe aanvraag via website - MCM"
                     />
                     <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_next" value="https://norbertbolier.github.io/Stichting_Mundo/aanvragen.html?success=true">
                     <input type="hidden" name="_captcha" value="false" />
                     <!-- Autoresponse will only work when captcha is enabled but for this you must be on a live server not locally-->
                     <input
@@ -1842,6 +1842,28 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
             });
           }, 500);
         });
+
+        // Check for success parameter in URL and handle redirect
+        if (window.location.search.includes('success=true')) {
+          // Scroll to the button
+          $('html, body').animate({
+            scrollTop: $('.button.aanvragen').offset().top - 100
+          }, 800);
+          
+          // Change button text to show success
+          $('.button.aanvragen').html('Submit succeeded!<br />Bedankt voor uw aanvraag.');
+          
+          // Add success styling
+          $('.button.aanvragen').css({
+            'background-color': '#28a745',
+            'color': 'white'
+          });
+          
+          // Clean up URL by removing the success parameter
+          if (window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+          }
+        }
 
         // Character counter for project description
         $("#project_omschrijving").on("input", function () {
