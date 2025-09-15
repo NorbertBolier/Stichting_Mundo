@@ -1910,7 +1910,12 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
         // Always set _next to current domain so redirect is same-origin
         var nextInput = form.querySelector('input[name="_next"]');
         if (nextInput) {
-          var nextUrl = window.location.origin + '/aanvragen.html?success=true';
+          if(window.location.origin === 'https://norbertbolier.github.io'){
+            var nextUrl = window.location.origin + '/Stichting_Mundo/aanvragen.html?success=true';
+          } 
+          else{
+            var nextUrl = window.location.origin + '/aanvragen.html?success=true';
+          }
           nextInput.value = nextUrl;
         }
 
