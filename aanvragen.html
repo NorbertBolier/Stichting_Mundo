@@ -930,6 +930,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="contact_persoon_naam"
                         id="contact_persoon_naam"
                         placeholder="Bijv. Jan Jansen"
+                        required
                       />
                       <label for="email" class="w-form-label required"
                         >E-mail</label
@@ -942,6 +943,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         id="email"
                         placeholder="bijv. naam@organisatie.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                        required
                       />
                       <label
                         for="contact_persoon_telnr1"
@@ -957,6 +959,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         placeholder="Bijv. +31 6 12345678"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
+                        required
                       />
                       <div
                         class="field-error aanvrager-telnr1-error"
@@ -980,6 +983,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="stichting_naam"
                         id="stichting_naam"
                         placeholder="Naam van de stichting"
+                        required
                       />
 
                       <label for="stichting_adres" class="w-form-label required"
@@ -992,6 +996,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="stichting_adres"
                         id="stichting_adres"
                         placeholder="Bijv. Hoofdstraat 123"
+                        required
                       />
 
                       <label
@@ -1007,6 +1012,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         id="stichting_e-mail"
                         placeholder="Bijv. info@stichting.nl"
                         pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                        required
                       />
 
                       <label for="org_telnr" class="w-form-label required"
@@ -1021,6 +1027,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         placeholder="Bijv. +31 20 1234567"
                         inputmode="tel"
                         pattern="^\\+?[0-9 ()-]{6,}$"
+                        required
                       />
                       <div
                         class="field-error org-telnr-error"
@@ -1053,6 +1060,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="stichting_bankrekening"
                         id="stichting_bankrekening"
                         placeholder="NL91 ABNA 0417 1643 00"
+                        required
                       />
 
                       <!-- Section 3: Aanvraag -->
@@ -1068,6 +1076,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="project_naam"
                         id="project_naam"
                         placeholder="Naam van het Project"
+                        required
                       />
 
                       <label
@@ -1081,6 +1090,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         id="project_omschrijving"
                         placeholder="Samenvatting van het project"
                         rows="4"
+                        required
                       ></textarea>
                       <div class="char-counter" id="doelstelling-counter">
                         0 / 250 karakters
@@ -1096,6 +1106,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         placeholder="Bijv. 1500"
                         min="0"
                         step="0.01"
+                        required
                       />
 
                       <label
@@ -1108,6 +1119,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         class=""
                         name="project_start_datum"
                         id="project_start_datum"
+                        required
                       />
 
                       <label
@@ -1120,6 +1132,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         class=""
                         name="project_eind_datum"
                         id="project_eind_datum"
+                        required
                       />
 
                       <label
@@ -1131,6 +1144,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         class="w-input"
                         name="project_categorie"
                         id="project_categorie"
+                        required
                       >
                         <option value="">Selecteer een categorie</option>
                         <option value="onderwijs">Noodhulp</option>
@@ -1161,6 +1175,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         maxlength="256"
                         name="project_land"
                         id="project_land"
+                        required
                       />
                       <label
                         for="project_doelgroepen"
@@ -1173,6 +1188,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         maxlength="256"
                         name="project_doelgroepen"
                         id="project_doelgroepen"
+                        required
                       />
                       <label
                         for="project_samenwerkings"
@@ -1186,6 +1202,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         maxlength="256"
                         name="project_samenwerkings"
                         id="project_samenwerkings"
+                        required
                       />
 
                       <!-- PDF Upload Section -->
@@ -1240,6 +1257,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="project_aanvraag_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1248,6 +1266,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="project_aanvraag_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1264,6 +1283,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="projectplan_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1272,6 +1292,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="projectplan_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1287,6 +1308,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="begroting_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1295,6 +1317,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="begroting_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1310,6 +1333,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="dekkingsplan_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1318,6 +1342,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="dekkingsplan_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1335,6 +1360,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="uittreksel_handelsregister_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1343,6 +1369,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="uittreksel_handelsregister_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1360,6 +1387,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="ANBI_verklaring_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1368,6 +1396,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="ANBI_verklaring_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1380,6 +1409,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="statuten_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1388,6 +1418,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="statuten_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1405,6 +1436,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="financieel_jaarverslag_check"
                             value="ja"
+                            required
                           />
                           Ja
                         </label>
@@ -1413,6 +1445,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                             type="radio"
                             name="financieel_jaarverslag_check"
                             value="nee"
+                            required
                           />
                           Nee
                         </label>
@@ -1441,6 +1474,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                         name="pdf"
                         id="pdf"
                         accept=".pdf"
+                        required
                       />
                       <p class="radio-help-text">
                         Upload een pdf met alle gevraagde documenten over uw aanvraag.
