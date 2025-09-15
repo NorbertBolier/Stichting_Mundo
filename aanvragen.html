@@ -599,27 +599,6 @@
           height: max-content;
         }
       }
-      /* Make right image column visually longer on desktop */
-      @media (min-width: 992px) {
-        .grid-4 .aanvraag-image-wrapper {
-          height: 420px;
-        }
-        .grid-4 .aanvraag-image-wrapper {
-          -webkit-transform: rotate(-9deg) scale(1);
-          -ms-transform: rotate(-9deg) scale(1);
-          transform: rotate(-9deg) scale(1);
-        }
-        .grid-4 .aanvraag-image-wrapper._2 {
-          -webkit-transform: rotate(10deg) scale(1);
-          -ms-transform: rotate(10deg) scale(1);
-          transform: rotate(10deg) scale(1);
-        }
-        .grid-4 .aanvraag-image-wrapper._3 {
-          -webkit-transform: rotate(-15deg) scale(1);
-          -ms-transform: rotate(-15deg) scale(1);
-          transform: rotate(-15deg) scale(1);
-        }
-      }
     </style>
     <script
       src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
@@ -929,6 +908,7 @@ Alle velden voorzien van een sterretje invullen alvorens het formulier in te stu
                     enctype="multipart/form-data"
                     target="formsubmit_iframe"
                   >
+                  <!-- ADD THIS LINE -> target="formsubmit_iframe" TO THE FORM TAG -->
                   <!-- action="https://formsubmit.co/info@mundocrastinomeliori.nl" -->
                     <input
                       type="hidden"
